@@ -15,5 +15,10 @@ namespace actividad
         private string nombre;
         private int edad;
 
+        public Persona(string Name, int Edad) 
+            {
+            this.nombre = Name;
+            this.edad = Edad;
+            }
     }
 }

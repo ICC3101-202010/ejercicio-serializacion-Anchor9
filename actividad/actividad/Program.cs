@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Serialization;
-using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Runtime.Serialization;
 
 namespace actividad
 {
@@ -13,12 +13,13 @@ namespace actividad
     {
         private static void SaveData(Persona person)
         {
+           
             Console.WriteLine("Nombre del archivo: ");
             string fileName = Console.ReadLine();
             // Creamos el Stream donde guardaremos nuestro juego
             FileStream fs = new FileStream(fileName, FileMode.CreateNew);
 
-            Formatter formatter = new BinaryFormatter()
+            IFormatter formatter = new BinaryFormatter();
             //no entiendoi por que me tira error el binary formatter
             formatter.Serialize(fs, person);
             fs.Close();
@@ -37,7 +38,7 @@ namespace actividad
         }
         static void Main(string[] args)
         {
-            Persona p1 = new Persona();
+            Persona p1 = new Persona("Alberto",23);
 
             SaveData(p1);
             Loaddata();
